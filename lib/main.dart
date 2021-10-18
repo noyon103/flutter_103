@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:nayan/pages/homepage.dart';
+import 'package:nayan/pages/loginpage.dart';
+import 'package:nayan/pages/routes.dart';
 
 void main() {
-  runApp(nayan());
+  runApp(const AuGust());
 }
 
-class nayan extends StatelessWidget {
-  const nayan({Key? key}) : super(key: key);
+class AuGust extends StatelessWidget {
+  const AuGust({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Material(
-        child: Center(
-          child: Container(
-            child: Text(
-              "My name is Nayan",
-              style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.pink,
-                  backgroundColor: Colors.blue),
-            ),
-          ),
-        ),
-      ),
+      themeMode: ThemeMode.light,
+      theme: ThemeData(
+          primarySwatch: Colors.deepOrange,
+          primaryTextTheme: GoogleFonts.aBeeZeeTextTheme()),
+      darkTheme: ThemeData(brightness: Brightness.dark),
+      initialRoute: "/login",
+      routes: {
+        "/": (context) => LoginPage(),
+        MyRoutes.homeRoute: (context) => Homepage(),
+        MyRoutes.loginRoute: (context) => LoginPage(),
+      },
     );
   }
 }
